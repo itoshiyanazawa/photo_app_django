@@ -28,7 +28,7 @@ DEBUG = True
 
 
 # Change depends on the IP address of the server
-ALLOWED_HOSTS = ['10.178.165.86', 'localhost', '127.0.0.1', '129.110.241.33']
+ALLOWED_HOSTS = []
 
 
 # Application definition
