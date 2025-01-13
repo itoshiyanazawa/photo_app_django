@@ -2,7 +2,7 @@
 
 This project is a full-stack web application built with Django, allowing users to share and manage photos. It features user authentication, CRUD operations for photos, and a responsive front-end using Bootstrap 5.
 
-![Alt text](screenshot.png)
+![Alt text](screenshott.png)
 
 ## Features
 
