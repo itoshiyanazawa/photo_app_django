@@ -2,6 +2,8 @@
 
 This project is a full-stack web application built with Django, allowing users to share and manage photos. It features user authentication, CRUD operations for photos, and a responsive front-end using Bootstrap 5.
 
+![Alt text](screenshot.png)
+
 ## Features
 
 - User registration and authentication
@@ -9,13 +11,6 @@ This project is a full-stack web application built with Django, allowing users t
 - Tag photos and filter by tags
 - Responsive design using Bootstrap 5
 
-## Screenshots
-
-Photo List
-
-Photo Detail
-
-Upload Photo
 
 ## Installation
 
