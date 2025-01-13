@@ -1,6 +1,6 @@
 '''Photo app generic views'''
 
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render, redirect
 
 from django.core.exceptions import PermissionDenied
 
@@ -10,7 +10,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from django.urls import reverse_lazy
 
-from .models import Photo
+from .models import Photo, Comment
+
+from django import forms
 
 class PhotoListView(ListView):
     
@@ -46,6 +48,25 @@ class PhotoDetailView(DetailView):
 
     context_object_name = 'photo'
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['text']
+
+def photo_detail(request, pk):
+    photo = get_object_or_404(Photo, pk=pk)
+    comments = photo.comments.all()
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.photo = photo
+            comment.author = request.user
+            comment.save()
+            return redirect('photoapp:detail', pk=photo.pk)
+    else:
+        form = CommentForm()
+    return render(request, 'photoapp/detail.html', {'photo': photo, 'comments': comments, 'form': form})
 
 class PhotoCreateView(LoginRequiredMixin, CreateView):
 

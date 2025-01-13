@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-qtjxi=d74$&8qc3iggrhrfb1i1h03k_r7qys#1cn1=e=i_d1f+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+# Change depends on the IP address of the server
+ALLOWED_HOSTS = ['10.178.165.86', 'localhost', '127.0.0.1', '129.110.241.33']
 
 
 # Application definition
@@ -143,3 +145,7 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 # Indicate the frontend framework to use
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+# TEST for logout
+LOGOUT_REDIRECT_URL = '/'

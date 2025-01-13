@@ -19,10 +19,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+# Test for logout
+from django.contrib.auth import views as auth_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Main app
     path('', include('photoapp.urls')),
     # Auth app
     path('users/', include('users.urls')),
+    # Log out app
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
