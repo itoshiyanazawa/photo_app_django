@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'taggit',
     'crispy_forms',
     'crispy_bootstrap4',
+    'django_recaptcha',
     # Custom apps
     'photoapp',
     'users',
@@ -147,5 +148,10 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
-# TEST for logout
+# Logout
 LOGOUT_REDIRECT_URL = '/'
+
+# TEST: Login Authentication
+RECAPTCHA_PUBLIC_KEY = '6LfdlLYqAAAAABMT1wv0Iqnr7TBpT4htLHVGokRt'
+RECAPTCHA_PRIVATE_KEY = '6LfdlLYqAAAAAOgd_NPEDZ7wt2WT8vT5AvrU_ERG'
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
