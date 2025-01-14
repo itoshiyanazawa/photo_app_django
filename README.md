@@ -64,6 +64,7 @@ This project is a full-stack web application built with Django, allowing users t
 
 ## Contribution
 - Added a dropdown menu on the top menu bar to improve the UI
+- Implemented reCAPTCHA user authentication on signup/log in menu
 
 
 
