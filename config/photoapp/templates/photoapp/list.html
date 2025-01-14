@@ -3,11 +3,24 @@
 
 {% block body %}
 
+<style>
+  .photo-frame {
+    border: 5px solid #ddd; /* Change the color and width as needed */
+    padding: 5px; /* Optional: Add padding inside the frame */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for a 3D effect */
+    transition: transform 0.2s; /* Optional: Add a transition for hover effect */
+  }
+
+  .photo-frame:hover {
+    transform: scale(1.05); /* Optional: Scale up the image slightly on hover */
+  }
+</style>
+
 <div class="row">
   {% for photo in photos %}
   <div class="col-lg-3 col-md-4 col-xs-6">
     <a href="{% url 'photo:detail' photo.id %}" class="d-block mb-4 h-100">
-      <img src="{{photo.image.url}}" class="img-fluid rounded" alt="{{photo.title}}" />
+      <img src="{{photo.image.url}}" class="img-fluid rounded photo-frame" alt="{{photo.title}}" />
     </a>
   </div>
   {% endfor %}

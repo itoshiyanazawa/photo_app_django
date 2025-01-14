@@ -10,5 +10,5 @@ urlpatterns = [
     path('photo/<int:pk>/update/', views.PhotoUpdateView.as_view(), name='update'),
     path('photo/<int:pk>/delete/', views.PhotoDeleteView.as_view(), name='delete'),
     path('tag/<slug:tag>/', views.PhotoTagListView.as_view(), name='tag'),
-    # path('photo/<int:pk>/', views.photo_detail, name='detail'),
+    # path('photo/<int:pk>/', views.CommentCreateView, name='detail'),
 ]

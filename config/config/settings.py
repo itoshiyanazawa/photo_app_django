@@ -148,7 +148,6 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
-<<<<<<< HEAD
 # Logout
 LOGOUT_REDIRECT_URL = '/'
 
@@ -156,7 +155,3 @@ LOGOUT_REDIRECT_URL = '/'
 RECAPTCHA_PUBLIC_KEY = '6LfdlLYqAAAAABMT1wv0Iqnr7TBpT4htLHVGokRt'
 RECAPTCHA_PRIVATE_KEY = '6LfdlLYqAAAAAOgd_NPEDZ7wt2WT8vT5AvrU_ERG'
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
-=======
-# TEST for logout
-LOGOUT_REDIRECT_URL = '/'
->>>>>>> 7d82c2ff104722d7219945592a81ea61c677fa4f

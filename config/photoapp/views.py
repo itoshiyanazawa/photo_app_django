@@ -10,9 +10,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from django.urls import reverse_lazy
 
-from .models import Photo, Comment
+from .models import Photo
 
 from django import forms
+
+from .forms import CommentForm
 
 class PhotoListView(ListView):
     
@@ -38,35 +40,20 @@ class PhotoTagListView(PhotoListView):
         context = super().get_context_data(**kwargs)
         context["tag"] = self.get_tag()
         return context
-     
+
+
+
+
 
 class PhotoDetailView(DetailView):
 
-    model = Photo
+    model = Photo# Photo
 
     template_name = 'photoapp/detail.html'
 
     context_object_name = 'photo'
 
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        fields = ['text']
 
-def photo_detail(request, pk):
-    photo = get_object_or_404(Photo, pk=pk)
-    comments = photo.comments.all()
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.photo = photo
-            comment.author = request.user
-            comment.save()
-            return redirect('photoapp:detail', pk=photo.pk)
-    else:
-        form = CommentForm()
-    return render(request, 'photoapp/detail.html', {'photo': photo, 'comments': comments, 'form': form})
 
 class PhotoCreateView(LoginRequiredMixin, CreateView):
 
@@ -114,3 +101,20 @@ class PhotoDeleteView(UserIsSubmitter, DeleteView):
     model = Photo
 
     success_url = reverse_lazy('photo:list')
+
+
+
+def photo_detail(request, pk):
+    photo = get_object_or_404(Photo, pk=pk)
+    comments = photo.comments.all()
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.photo = photo
+            comment.author = request.user
+            comment.save()
+            return redirect('photo:detail', pk=photo.pk)
+    else:
+        form = CommentForm()
+    return render(request, 'photoapp/detail.html', {'photo': photo, 'comments': comment, 'form': form})
